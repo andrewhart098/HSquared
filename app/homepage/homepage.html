@@ -1,3 +1,15 @@
 <p>Hello Homepage</p>
 
+<div ng-repeat="blog in blogs">
+	<span>{{blog.title}}</span>
+	<span>{{blog.author}}</span>
+	<span>{{blog.date | date: 'short'}}</span>
+	<button ng-click='removeBlog(blog)'>Remove</button>
+</div>
+
+<form >
+	<input ng-model='newBlog.title' placeholder='title'/>
+	<input ng-model='newBlog.author' placeholder='author'/>
+	<button ng-click="addBlog()">add</button>
+</form>
 

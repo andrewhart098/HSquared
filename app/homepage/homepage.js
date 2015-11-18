@@ -9,24 +9,31 @@ angular.module('myApp.homepage', ['ngRoute'])
   });
 }])
 
-.controller('HomePageCtrl', ['$scope' function($scope) {
-	$scope.blogs = 
-[
-{
-"title":"hello1",
-"author":"me",
-"date":"11-17-2015"
-},
-{
-"title":"hello2",
-"author":"me",
-"date":"11-17-2015"
-},
-{
-"title":"hello3",
-"author":"me",
-"date":"11-17-2015"
-}
-];
+.controller('HomePageCtrl', ['$scope', function($scope) {
 
+	$scope.newBlog = {};
+
+	$scope.blogs = 
+		[
+			{"title":"hello1", "author":"me", "date":new Date()}, 
+			{"title":"hello2", "author":"me", "date":new Date()}, 
+			{"title":"hello3", "author":"me", "date":new Date()} 
+		];
+
+	$scope.addBlog = function() {
+		var newBlog = {
+			title: $scope.newBlog.title,
+			author: $scope.newBlog.author,
+			date: new Date()
+		};
+
+		$scope.blogs.push(newBlog);
+
+		$scope.newBlog = {};
+	};
+
+
+	$scope.removeBlog = function(blog) {
+		$scope.blogs.splice($scope.blogs.indexOf(blog), 1);
+	};
 }]);
